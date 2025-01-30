@@ -1,0 +1,63 @@
+version: 2 
+models:
+  - name: airbnb__stg_listings
+    description: "This model processes the raw listings data"
+    columns:
+      - name: listing_id
+        description: "Unique identifier for each listing"
+        tests:
+          - not_null
+          - unique
+      - name: listing_url
+        description: "URL for the listing"
+      - name: listing_name
+        description: "Name of the listing"
+      - name: room_type
+        description: "Type of room"
+      - name: minimum_nights
+        description: "Minimum nights required to book"
+      - name: host_id
+        description: "Unique identifier for the host"
+      - name: listing_price
+        description: "Price per night"
+      - name: created_at
+        description: "Date the listing was created"
+      - name: updated_at
+        description: "Date the listing was last updated"
+  - name: airbnb__stg_reviews
+    description: "This model processes the raw reviews data"
+    columns:
+      - name: review_id
+        description: "Unique identifier for each review"
+        tests:
+          - not_null
+          - unique
+      - name: listing_id
+        description: "Unique identifier for each listing"
+      - name: reviewer_name
+        description: "name for the reviewer"
+      - name: review_date
+        description: "Date the review was created"
+      - name: review_comments
+        description: "Comments from the reviewer"
+      - name: review_sentiment
+        description: "Sentiment of the review"
+  - name: airbnb__stg_hosts
+    description: "This model processes the raw hosts data"
+    columns:
+      - name: host_id
+        description: "Unique identifier for the host"
+        tests:
+          - not_null
+          - unique
+      - name: host_name
+        description: "Name of the host"
+      - name: is_superhost
+        description: "Whether the host is a superhost"
+        tests:
+          - accepted_values:
+              values: [1, 0]
+      - name: created_at
+        description: "Date the host was created"
+      - name: updated_at
+        description: "Date the host was last updated"
