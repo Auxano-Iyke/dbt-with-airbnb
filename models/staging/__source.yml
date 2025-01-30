@@ -16,6 +16,9 @@ sources:
             description: "Name of the host"
           - name: is_superhost
             description: "Is the host a superhost"
+            tests:
+              - accepted_values:
+                  values: ['t', 'f']
           - name: created_at
             description: "Date the host joined Airbnb"
           - name: updated_at
