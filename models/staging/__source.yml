@@ -1,0 +1,59 @@
+version: 2
+sources:
+  - name: airbnb
+    description: "The data source for Airbnb data"
+    database: ADB
+    tables:
+      - name: hosts
+        description: "This is the hosts table"
+        columns:
+          - name: id 
+            description: "Unique identifier for each host"
+            tests:
+              - not_null
+              - unique
+          - name: name
+            description: "Name of the host"
+          - name: is_superhost
+            description: "Is the host a superhost"
+          - name: created_at
+            description: "Date the host joined Airbnb"
+          - name: updated_at
+            description: "Date the host last updated their profile"
+      - name: listings
+        description: "This is the listings table"
+        columns:
+          - name: id
+            description: "Unique identifier for each listing"
+            tests:
+              - not_null
+              - unique
+          - name: listing_url
+            description: "URL for the listing"
+          - name: name
+            description: "Name of the listing"
+          - name: room_type
+            description: "Type of room"
+          - name: minimum_nights
+            description: "Minimum nights required to book"
+          - name: host_id
+            description: "Unique identifier for the host"
+          - name: price
+            description: "Price per night"
+          - name: created_at
+            description: "Date the listing was created"
+          - name: updated_at
+            description: "Date the listing was last updated"
+      - name: reviews
+        description: "This is the reviews table"
+        columns:
+          - name: listing_id
+            description: "Unique identifier for the listing"
+            tests:
+              - not_null
+          - name: date
+            description: "Date of the review"
+          - name: reviewer_name
+            description: "Name of the reviewer"
+          - name: comments
+            description: "Comments from the reviewer"
